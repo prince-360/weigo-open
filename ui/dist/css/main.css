@@ -1,0 +1,41 @@
+html, body {
+    height: 100%;
+}
+
+main {
+    min-height: 100%;
+}
+
+main {
+    background-color: #eee;
+}
+
+.stream-page .media.post-card-stream {
+    background-color: white;
+}
+
+.avatar-holder {
+    width: 100%;
+    padding-bottom: 100%;
+    background-image: url(/uploaded/avatar/default.png);
+    background-repeat: no-repeat;
+    background-position: center;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    border-radius: 5px;
+}
+
+.media-holder {
+    width: 100%;
+    padding-bottom: 100%;
+    background-image: url(/uploaded/media/default.png);
+    background-repeat: no-repeat;
+    background-position: center;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    border-radius: 5px;
+}
