@@ -1,4 +1,20 @@
-# API
+# Weigo
+
+Weigo is a testing project using Golang and Vuejs-2 that copycats twitter. You can test it directly [here](https://weigo.tuxlinuxien.com/).
+
+Don't use it in production, however you are free to fork it and modify it as much
+as you need.
+
+## Install
+
+```
+cd $GOPATH/src
+git clone https://github.com/tuxlinuxien/weigo-open.git ./weigo
+```
+
+## SQL
+
+Weigo is using Postgres 9.5+.
 
 ```sql
 DROP SCHEMA public CASCADE;
