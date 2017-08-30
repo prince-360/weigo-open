@@ -126,50 +126,50 @@ FOR EACH ROW EXECUTE PROCEDURE post_comment_count_procedure();
 
 ```conf
 server {
-	listen listen 443 ssl http2;
-	server_name weigo.tuxlinuxien.com;
+    listen listen 443 ssl http2;
+    server_name weigo.tuxlinuxien.com;
 
-	ssl_certificate     /etc/letsencrypt/live/weigo.tuxlinuxien.com/fullchain.pem;
-	ssl_certificate_key /etc/letsencrypt/live/weigo.tuxlinuxien.com/privkey.pem;
-	ssl_protocols TLSv1 TLSv1.1 TLSv1.2; # Dropping SSLv3, ref: POODLE
-	ssl_prefer_server_ciphers on;
-	ssl_ciphers EECDH+CHACHA20:EECDH+AES128:RSA+AES128:EECDH+AES256:RSA+AES256:EECDH+3DES:RSA+3DES:!MD5;
-	ssl_session_cache shared:SSL:10m;
-	ssl_session_timeout 10m;
-	ssl_stapling on;
-	ssl_stapling_verify on;
-	add_header Strict-Transport-Security "max-age=31536000; includeSubDomains; preload" always;
+    ssl_certificate     /etc/letsencrypt/live/weigo.tuxlinuxien.com/fullchain.pem;
+    ssl_certificate_key /etc/letsencrypt/live/weigo.tuxlinuxien.com/privkey.pem;
+    ssl_protocols TLSv1 TLSv1.1 TLSv1.2; # Dropping SSLv3, ref: POODLE
+    ssl_prefer_server_ciphers on;
+    ssl_ciphers EECDH+CHACHA20:EECDH+AES128:RSA+AES128:EECDH+AES256:RSA+AES256:EECDH+3DES:RSA+3DES:!MD5;
+    ssl_session_cache shared:SSL:10m;
+    ssl_session_timeout 10m;
+    ssl_stapling on;
+    ssl_stapling_verify on;
+    add_header Strict-Transport-Security "max-age=31536000; includeSubDomains; preload" always;
 
-	keepalive_timeout 5;
-	charset utf8;
+    keepalive_timeout 5;
+    charset utf8;
 
     location /dist/ {
         expires 1d;
-		access_log off;
-		add_header Cache-Control "public";
+        access_log off;
+        add_header Cache-Control "public";
         root ;
     }
 
     location /uploaded/ {
         expires 1M;
-		access_log off;
-		add_header Cache-Control "public";
+        access_log off;
+        add_header Cache-Control "public";
         root ;
-    }    
+    }
 
-	location / {
-		proxy_set_header Host $host;
-		proxy_redirect off;
-		proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
-		proxy_set_header X-Forwarded-Proto $scheme;
-		proxy_pass http://localhost:1314;
-	}
+    location / {
+        proxy_set_header Host $host;
+        proxy_redirect off;
+        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+        proxy_set_header X-Forwarded-Proto $scheme;
+        proxy_pass http://localhost:1314;
+    }
 }
 
 server {
-	listen 80;
-	server_name weigo.tuxlinuxien.com;
-	return 302 https://$server_name$request_uri;
+    listen 80;
+    server_name weigo.tuxlinuxien.com;
+    return 302 https://$server_name$request_uri;
 }
 ```
 
